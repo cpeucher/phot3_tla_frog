@@ -47,21 +47,6 @@ function [ifrog,esigw] = frog_trace(sig,gate)
 %                           ifrog = abs(esigw).^2;
 %
 % -------------------------------------------------------------------------
-% GLOBAL:
-% -------------------------------------------------------------------------
-%
-%
-% -------------------------------------------------------------------------
-% REMARKS:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% TO DO:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
 % CREDITS:
 % -------------------------------------------------------------------------
 % The method employed to calculate the spectrogram is strongly inspired by
@@ -71,25 +56,20 @@ function [ifrog,esigw] = frog_trace(sig,gate)
 % [Accessed 2011-08-12].
 %
 % -------------------------------------------------------------------------
-% AUTHOR:
-% -------------------------------------------------------------------------
-% Christophe Peucheret (christophe.peucheret@univ-rennes.fr) 
-%
-% -------------------------------------------------------------------------
 % -------------------------------------------------------------------------
 
 sig = sig(:);
-% Force the signal to a column vector.
+% Force the signal to a column vector
 gate = gate(:);
-% Force the gate to a column vector.
+% Force the gate to a column vector
 
 nsamples = length(sig);
-% Number of samples in the signal.
+% Number of samples in the signal
 
 if nsamples ~= length(gate)
     error('frog_trace: the signal and the gate should have the same length.');
 end
-% The signal and the gate should have the same length.
+% The signal and the gate should have the same length
 
 esig = sig*gate.';
 % Create matrix esig_ij= (sig(i) * gate(j)
@@ -132,10 +112,4 @@ spmax = max(ifrog,[],'all');
 ifrog = ifrog/spmax;
 % Normalise FROG trace
 
-
-
-
 end
-% -------------------------------------------------------------------------
-% End of function
-% -------------------------------------------------------------------------

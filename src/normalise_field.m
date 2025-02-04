@@ -9,7 +9,7 @@ function sig = normalise_field(sig)
 % n = nsamples/2 +  1
 % where nsamples is the total number of samples in sig. nsamples is assumed
 % to be an even number.
-% It also normalise sig so that
+% It also normalises sig so that
 % sig(nsamples/2 + 1) = 1
 % i.e. the peak power at the center of the time window is equal to 1 and
 % the phase is equal to zero.
@@ -31,31 +31,6 @@ function sig = normalise_field(sig)
 %                       We have sig(nsamples/2 + 1) = 1
 %
 % -------------------------------------------------------------------------
-% GLOBAL:
-% -------------------------------------------------------------------------
-%
-%
-% -------------------------------------------------------------------------
-% REMARKS:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% TO DO:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% CREDITS:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% AUTHOR:
-% -------------------------------------------------------------------------
-% Christophe Peucheret (christophe.peucheret@univ-rennes1.fr)
-%
-% -------------------------------------------------------------------------
 % -------------------------------------------------------------------------
 
 nsamples = length(sig);
@@ -63,16 +38,12 @@ nsamples = length(sig);
 if rem(nsamples,2)
     error('normalise_field: number of samples of the input field should be even.')
 end
-% Check that the number of samples is an even number.
+% Check that the number of samples is an even number
 
 [~,imax] = max(abs(sig).^2);
-% Determine the sample corresponding to the peak power.
+% Determine the sample corresponding to the peak power
 
 sig = circshift(sig,[0 nsamples/2 + 1 - imax])/sig(imax);
-% Retime and normalise the output field.
-
+% Retime and normalise the output field
 
 end
-% -------------------------------------------------------------------------
-% End of function
-% -------------------------------------------------------------------------

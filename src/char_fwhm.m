@@ -6,7 +6,7 @@ function [xwidth,xleft,xright] = char_fwhm(x,y,threshold)
 % -------------------------------------------------------------------------
 % This function returns an estimate of the full-width of a function at a
 % specified threshold level. For returning the full-width at half-maximum, 
-% set threshold = 0.5;
+% set threshold = 0.5
 % This function is not robust. It is the responsibility of the user to
 % ensure the function width is well defined at the specified threshold
 % value.
@@ -44,39 +44,14 @@ function [xwidth,xleft,xright] = char_fwhm(x,y,threshold)
 %                       [real scalar]
 %
 % -------------------------------------------------------------------------
-% GLOBAL:
-% -------------------------------------------------------------------------
-%
-%
-% -------------------------------------------------------------------------
-% REMARKS:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% TO DO:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% CREDITS:
-% -------------------------------------------------------------------------
-% 
-%
-% -------------------------------------------------------------------------
-% AUTHOR:
-% -------------------------------------------------------------------------
-% Christophe Peucheret (christophe.peucheret@univ-rennes1.fr)
-%
-% -------------------------------------------------------------------------
 % -------------------------------------------------------------------------
 
 y = y/max(y);
-% Normalise the function so that its peak value is unity.
+% Normalise the function so that its peak value is unity
 
 indices_above = find(y >= threshold);
 % Find the indices for which the function values are larger than the
-% threshold.
+% threshold
 
 x0 = x(indices_above(1) - 1);
 y0 = y(indices_above(1) - 1);
@@ -85,7 +60,7 @@ x1 = x(indices_above(1));
 y1 = y(indices_above(1));
 
 xleft = x0 + (threshold - y0)/(y1 - y0)*(x1 - x0);
-% Linear interpolation on the lower x value side.
+% Linear interpolation on the lower x value side
 
 x0 = x(indices_above(end));
 y0 = y(indices_above(end));
@@ -94,13 +69,10 @@ x1 = x(indices_above(end) + 1);
 y1 = y(indices_above(end) + 1);
 
 xright = x0 + (threshold - y0)/(y1 - y0)*(x1 - x0);
-% Linear interpolation on the higher x value side.
+% Linear interpolation on the higher x value side
 
 xwidth = xright - xleft; 
-% Width at threshold.
+% Width at threshold
 
 
 end
-% -------------------------------------------------------------------------
-% End of function
-% -------------------------------------------------------------------------
